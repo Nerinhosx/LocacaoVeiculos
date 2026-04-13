@@ -1,10 +1,12 @@
 package view;
 
+import controller.LocacaoController;
 import javax.swing.*;
 import java.awt.*;
 
 public class LocacaoView extends JFrame {
     private JTextField txtCpfCliente, txtPlacaVeiculo, txtData, txtHora, txtKm, txtCaucao;
+    private LocacaoController controller = new LocacaoController();
 
     public LocacaoView() {
         setTitle("Registro de Locação [RF11 / RF13]");
@@ -22,14 +24,21 @@ public class LocacaoView extends JFrame {
         JButton btnRegistrar = new JButton("Registrar Retirada");
 
         btnCalcular.addActionListener(e -> {
-            // Lógica para RF12 baseada em categoria e diárias [cite: 30]
-            JOptionPane.showMessageDialog(this, "Valor estimado calculado pelo LocacaoController.");
+            String estimativa = controller.calcularEstimativa('A');
+            JOptionPane.showMessageDialog(this, estimativa);
         });
 
         btnRegistrar.addActionListener(e -> {
-            // Envia para LocacaoController para criar LocacaoEntity e salvar via DAO
-            JOptionPane.showMessageDialog(this, "Locação registrada! Veículo agora está como 'LOCADO' [cite: 31]");
-            dispose();
+            String mensagem = controller.registrarRetirada(
+                txtCpfCliente.getText(),
+                txtPlacaVeiculo.getText(),
+                txtData.getText(),
+                txtHora.getText(),
+                txtKm.getText(),
+                txtCaucao.getText()
+            );
+            JOptionPane.showMessageDialog(this, mensagem);
+            if(mensagem.contains("Sucesso")) dispose();
         });
 
         add(btnCalcular);

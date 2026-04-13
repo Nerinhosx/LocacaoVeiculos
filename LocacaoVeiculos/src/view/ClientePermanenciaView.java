@@ -1,10 +1,12 @@
 package view;
 
+import controller.ClienteController;
 import javax.swing.*;
 import java.awt.*;
 
 public class ClientePermanenciaView extends JFrame {
     private JTextField txtCpf, txtNome, txtTelefone, txtEmail;
+    private ClienteController controller = new ClienteController();
 
     public ClientePermanenciaView() {
         setTitle("Cadastro / Atualização de Cliente [RF8/RF9]");
@@ -18,8 +20,13 @@ public class ClientePermanenciaView extends JFrame {
 
         JButton btnAcao = new JButton("Persistir Dados");
         btnAcao.addActionListener(e -> {
-            // Comunicação com ClienteController para validação de dados (RF10)
-            JOptionPane.showMessageDialog(this, "Processando dados do Cliente...");
+            String mensagem = controller.persistirCliente(
+                txtCpf.getText(),
+                txtNome.getText(),
+                txtTelefone.getText(),
+                txtEmail.getText()
+            );
+            JOptionPane.showMessageDialog(this, mensagem);
         });
 
         add(new JLabel("")); add(btnAcao);

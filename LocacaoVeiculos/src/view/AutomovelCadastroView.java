@@ -1,10 +1,12 @@
 package view;
 
+import controller.AutomovelController;
 import javax.swing.*;
 import java.awt.*;
 
 public class AutomovelCadastroView extends JFrame {
     private JTextField txtPlaca, txtRenavam, txtChassi, txtCor, txtValor;
+    private AutomovelController controller = new AutomovelController();
 
     public AutomovelCadastroView() {
         setTitle("Cadastrar Veículo [RF1]");
@@ -19,8 +21,15 @@ public class AutomovelCadastroView extends JFrame {
 
         JButton btnSalvar = new JButton("Salvar");
         btnSalvar.addActionListener(e -> {
-            // Aqui os dados seriam enviados ao AutomovelController para validação
-            JOptionPane.showMessageDialog(this, "Veículo enviado para validação!");
+            String mensagem = controller.salvarAutomovel(
+                txtPlaca.getText(),
+                txtRenavam.getText(),
+                txtChassi.getText(),
+                txtCor.getText(),
+                txtValor.getText()
+            );
+            JOptionPane.showMessageDialog(this, mensagem);
+            if(mensagem.contains("Sucesso")) dispose();
         });
         
         add(new JLabel("")); add(btnSalvar);

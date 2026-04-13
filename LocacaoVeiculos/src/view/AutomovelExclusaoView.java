@@ -1,11 +1,13 @@
 package view;
 
+import controller.AutomovelController;
 import javax.swing.*;
 import java.awt.*;
 
 public class AutomovelExclusaoView extends JFrame {
     private JTextField txtPlaca;
     private JTextArea areaDados;
+    private AutomovelController controller = new AutomovelController();
 
     public AutomovelExclusaoView() {
         setTitle("Exclusão de Veículo [RF4]");
@@ -26,23 +28,26 @@ public class AutomovelExclusaoView extends JFrame {
         JButton btnExcluir = new JButton("Confirmar Exclusão");
         btnExcluir.setBackground(Color.RED);
         btnExcluir.setForeground(Color.WHITE);
-        btnExcluir.setEnabled(false); // Só habilita após busca
+        btnExcluir.setEnabled(false);
 
-        // Ações simulando comunicação com AutomovelController
         btnBuscar.addActionListener(e -> {
-            String placa = txtPlaca.getText();
-            if (!placa.isEmpty()) {
-                areaDados.setText("Veículo encontrado: " + placa + "\nModelo: Exemplo\nStatus: Disponível");
+            String dados = controller.buscarParaExclusao(txtPlaca.getText());
+            if (dados != null) {
+                areaDados.setText(dados);
                 btnExcluir.setEnabled(true);
+            } else {
+                areaDados.setText("Veículo não encontrado.");
+                btnExcluir.setEnabled(false);
             }
         });
 
         btnExcluir.addActionListener(e -> {
             int confirm = JOptionPane.showConfirmDialog(this, "Tem certeza que deseja remover este veículo?");
             if (confirm == JOptionPane.YES_OPTION) {
-                // Chama AutomovelController para marcar como inativo [cite: 21]
-                JOptionPane.showMessageDialog(this, "Veículo removido com sucesso!");
-                dispose();
+                if(controller.excluirAutomovel(txtPlaca.getText())) {
+                    JOptionPane.showMessageDialog(this, "Veículo removido com sucesso!");
+                    dispose();
+                }
             }
         });
 
