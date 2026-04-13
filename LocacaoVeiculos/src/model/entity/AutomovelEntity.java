@@ -1,4 +1,6 @@
+package model.entity;
 
+import model.entity.ModeloEntity;
 
 import java.math.BigDecimal;
 import java.util.Objects;
