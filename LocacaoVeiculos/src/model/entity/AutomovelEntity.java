@@ -1,7 +1,9 @@
+
+
 import java.math.BigDecimal;
 import java.util.Objects;
 
-public class Automovel {
+public class AutomovelEntity {
 
     private Long id;
     private String placa;
@@ -9,15 +11,15 @@ public class Automovel {
     private String chassi;
     private String cor;
     private Integer numeroPortas;
-    private Integer tipoCombustivel; 
+    private Integer tipoCombustivel;
     private Long quilometragem;
     private BigDecimal valorLocacao;
-    private Modelo modelo;
+    private ModeloEntity modelo;
 
-    public Automovel() {
+    public AutomovelEntity() {
     }
 
-    public Automovel(Long id, String placa, String renavam, String chassi, String cor, Integer numeroPortas, Integer tipoCombustivel, Long quilometragem, BigDecimal valorLocacao, Modelo modelo) {
+    public AutomovelEntity(Long id, String placa, String renavam, String chassi, String cor, Integer numeroPortas, Integer tipoCombustivel, Long quilometragem, BigDecimal valorLocacao, ModeloEntity modelo) {
         this.id = id;
         this.placa = placa;
         this.renavam = renavam;
@@ -102,11 +104,11 @@ public class Automovel {
         this.valorLocacao = valorLocacao;
     }
 
-    public Modelo getModelo() {
+    public ModeloEntity getModelo() {
         return modelo;
     }
 
-    public void setModelo(Modelo modelo) {
+    public void setModelo(ModeloEntity modelo) {
         this.modelo = modelo;
     }
 
@@ -114,7 +116,7 @@ public class Automovel {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Automovel automovel = (Automovel) o;
+        AutomovelEntity automovel = (AutomovelEntity) o;
         return Objects.equals(id, automovel.id);
     }
 

@@ -1,6 +1,8 @@
+
+
 import java.util.Objects;
 
-public class Cliente {
+public class ClienteEntity {
 
     private Long id;
     private String cpf;
@@ -9,10 +11,10 @@ public class Cliente {
     private String telefone;
     private String email;
 
-    public Cliente() {
+    public ClienteEntity() {
     }
 
-    public Cliente(Long id, String cpf, String nome, String endereco, String telefone, String email) {
+    public ClienteEntity(Long id, String cpf, String nome, String endereco, String telefone, String email) {
         this.id = id;
         this.cpf = cpf;
         this.nome = nome;
@@ -73,7 +75,7 @@ public class Cliente {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Cliente cliente = (Cliente) o;
+        ClienteEntity cliente = (ClienteEntity) o;
         return Objects.equals(id, cliente.id);
     }
 

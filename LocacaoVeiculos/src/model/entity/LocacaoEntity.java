@@ -1,8 +1,9 @@
+
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-public class Locacao {
+public class LocacaoEntity {
 
     private Long id;
     private LocalDateTime dataHoraRetirada;
@@ -12,13 +13,13 @@ public class Locacao {
     private BigDecimal valorCaucao;
     private BigDecimal valorDevolucao;
     private Boolean devolvida = false;
-    private Automovel automovel;
-    private Cliente cliente;
+    private AutomovelEntity automovel;
+    private ClienteEntity cliente;
 
-    public Locacao() {
+    public LocacaoEntity() {
     }
 
-    public Locacao(Long id, LocalDateTime dataHoraRetirada, LocalDateTime dataHoraDevolucao, Long quilometragemRetirada, Long quilometragemDevolucao, BigDecimal valorCaucao, BigDecimal valorDevolucao, Boolean devolvida, Automovel automovel, Cliente cliente) {
+    public LocacaoEntity(Long id, LocalDateTime dataHoraRetirada, LocalDateTime dataHoraDevolucao, Long quilometragemRetirada, Long quilometragemDevolucao, BigDecimal valorCaucao, BigDecimal valorDevolucao, Boolean devolvida, AutomovelEntity automovel, ClienteEntity cliente) {
         this.id = id;
         this.dataHoraRetirada = dataHoraRetirada;
         this.dataHoraDevolucao = dataHoraDevolucao;
@@ -95,19 +96,19 @@ public class Locacao {
         this.devolvida = devolvida;
     }
 
-    public Automovel getAutomovel() {
+    public AutomovelEntity getAutomovel() {
         return automovel;
     }
 
-    public void setAutomovel(Automovel automovel) {
+    public void setAutomovel(AutomovelEntity automovel) {
         this.automovel = automovel;
     }
 
-    public Cliente getCliente() {
+    public ClienteEntity getCliente() {
         return cliente;
     }
 
-    public void setCliente(Cliente cliente) {
+    public void setCliente(ClienteEntity cliente) {
         this.cliente = cliente;
     }
 
@@ -115,8 +116,8 @@ public class Locacao {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Locacao locacao = (Locacao) o;
-        return Objects.equals(id, locacao.id);
+        LocacaoEntity that = (LocacaoEntity) o;
+        return Objects.equals(id, that.id);
     }
 
     @Override
