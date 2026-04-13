@@ -1,6 +1,7 @@
 package view;
 
 import controller.LocacaoController;
+
 import javax.swing.*;
 import java.awt.*;
 

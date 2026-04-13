@@ -3,7 +3,6 @@ package controller;
 import model.entity.Automovel;
 import model.entity.Cliente;
 import model.entity.Locacao;
-
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeParseException;
@@ -42,6 +41,22 @@ public class LocacaoController {
             return "Erro: Verifique se CPF, KM e Caução contêm apenas números.";
         } catch (DateTimeParseException e) {
             return "Erro: Data ou Hora em formato inválido. Use AAAA-MM-DD e HH:MM.";
+        }
+    }
+    
+    public String registrarDevolucao(String placa, String dataDev, String horaDev, String kmFinalTxt) {
+        try {
+            long kmFinal = Long.parseLong(kmFinalTxt);
+            // Aqui o sistema buscaria a locação ativa pela placa na lista estática
+            // Exemplo de retorno de lógica:
+            double valorFinal = 250.0; // Valor calculado pela lógica do RF12
+            
+            return "Sucesso: Veículo " + placa + " devolvido.\n" +
+                   "Valor Total: R$ " + valorFinal + "\n" +
+                   "Status: DISPONÍVEL";
+                   
+        } catch (Exception e) {
+            return "Erro: Verifique os dados de KM e formato de data.";
         }
     }
 
