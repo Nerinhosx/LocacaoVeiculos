@@ -5,7 +5,7 @@ import java.awt.*;
 
 public class HomeView extends JFrame {
     public HomeView() {
-        setTitle("Sistema de Locação - FT Unicamp"); [cite: 1, 14]
+        setTitle("Sistema de Locação - FT Unicamp");
         setSize(450, 300);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);

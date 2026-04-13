@@ -7,7 +7,7 @@ public class ClientePermanenciaView extends JFrame {
     private JTextField txtCpf, txtNome, txtTelefone, txtEmail;
 
     public ClientePermanenciaView() {
-        setTitle("Cadastro / Atualização de Cliente [RF8/RF9]"); [cite: 26, 27]
+        setTitle("Cadastro / Atualização de Cliente [RF8/RF9]");
         setSize(400, 300);
         setLayout(new GridLayout(5, 2, 10, 10));
 

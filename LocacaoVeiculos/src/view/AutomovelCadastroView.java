@@ -7,7 +7,7 @@ public class AutomovelCadastroView extends JFrame {
     private JTextField txtPlaca, txtRenavam, txtChassi, txtCor, txtValor;
 
     public AutomovelCadastroView() {
-        setTitle("Cadastrar Veículo [RF1]"); [cite: 18]
+        setTitle("Cadastrar Veículo [RF1]");
         setSize(400, 350);
         setLayout(new GridLayout(6, 2, 5, 5));
 
